@@ -1,0 +1,260 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="mobile-profile" on-click="{{tapped}}">
+  <template>
+    <!-- <link rel="stylesheet" href="mobile-profile.css"> -->
+    <style>
+    :host {
+      /*background-color: rgb(243,99,104);*/
+      z-index: 100;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+    polyfill-next-selector { content: ':host > div'; }
+    ::content div { /* scope relative selector */
+      background: blue;
+    }
+    .front-side {
+      position: absolute;
+      left:30px;
+      top:30px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: rgb(255, 255, 255);
+      opacity: 0;
+      -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      -webkit-transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s;
+      transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s;
+    }
+
+    polyfill-next-selector { content: '.front-side img'; }
+    .front-side ::content img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+
+    .back-side {
+      position: absolute;
+      left:30px;
+      top:30px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: rgb(243,99,104);
+      background: rgb(243,99,104);
+      -webkit-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
+      -moz-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
+      transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
+      -webkit-transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s border-radius 0.38s;
+      transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s border-radius 0.38s;
+      text-align: right;
+    }
+    /*left 0.38s, top 0.38s, */
+    .about-panel{
+      z-index: 500;
+      /*left: 0;
+      top: 0;*/
+      width: 1000px;
+      height: 800px;
+      border-radius: 0;
+    }
+    .title {
+      position: absolute;
+      right:55px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 200px;
+      -webkit-transition: font-size ease-in-out 0.38s;
+      transition: font-size ease-in-out 0.38s;
+    }
+    .bigger-title{
+      font-size: 48px;
+      /*-webkit-transition: font-size ease-in-out 0.38s;
+      transition: font-size ease-in-out 0.38s;*/
+    }
+    .mirror {
+      display: inline-block;
+      transform: scaleX(-1); /* standard */
+      -moz-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH; /* IE 6/7/8 */
+    }
+
+    .rotateandfadeout {
+      -webkit-animation: rotateandfadeout 0.38s linear 0s 1 normal forwards;
+      -moz-animation: rotateandfadeout 0.38s linear 0s 1 normal forwards;
+      animation: rotateandfadeout 0.38s linear 0s 1 normal forwards;
+    }
+
+    .rotateandfadein {
+      -webkit-animation: rotateandfadein 0.38s linear 0s 1 normal forwards;
+      -moz-animation: rotateandfadein 0.38s linear 0s 1 normal forwards;
+      animation: rotateandfadein 0.38s linear 0s 1 normal forwards;
+    }
+
+    .rotatebackandfadein {
+      -webkit-animation: rotatebackandfadein 0.38s linear 0s 1 normal forwards;
+      -moz-animation: rotatebackandfadein 0.38s linear 0s 1 normal forwards;
+      animation: rotatebackandfadein 0.38s linear 0s 1 normal forwards;
+    }
+    .rotatebackandfadeout {
+      -webkit-animation: rotatebackandfadeout 0.38s linear 0s 1 normal forwards;
+      -moz-animation: rotatebackandfadeout 0.38s linear 0s 1 normal forwards;
+      animation: rotatebackandfadeout 0.38s linear 0s 1 normal forwards;
+    }
+    /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+    @-webkit-keyframes rotateandfadein {
+      0% { opacity: 0;  -webkit-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 0;  -webkit-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 0;  -webkit-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 1;  -webkit-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 1;  -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @-moz-keyframes rotateandfadein {
+      0% { opacity: 0; -moz-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 0; -moz-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 0; -moz-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 1; -moz-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 1; -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @keyframes rotateandfadein {
+      0% { opacity: 0; transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 0; transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 0; transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 1; transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+    /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+    @-webkit-keyframes rotateandfadeout {
+      0% { opacity: 1;  -webkit-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 1;  -webkit-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1;  -webkit-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 0;  -webkit-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 0;  -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @-moz-keyframes rotateandfadeout {
+      0% { opacity: 1; -moz-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 1; -moz-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1; -moz-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 0; -moz-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 0; -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @keyframes rotateandfadeout {
+      0% { opacity: 1; transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 1; transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1; transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 1; transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+    /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+    @-webkit-keyframes rotatebackandfadeout {
+      0% { opacity: 1;  -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 1;  -webkit-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1;  -webkit-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 0;  -webkit-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 0;  -webkit-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @-moz-keyframes rotatebackandfadeout {
+      0% { opacity: 1; -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 1; -moz-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1; -moz-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 0; -moz-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 0; -moz-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @keyframes rotatebackandfadeout {
+      0% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 1; transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1; transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 0; transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 0; transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+    /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+    @-webkit-keyframes rotatebackandfadein {
+      0% { opacity: 0;  -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 0;  -webkit-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1;  -webkit-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 1;  -webkit-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 1;  -webkit-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @-moz-keyframes rotatebackandfadein {
+      0% { opacity: 0; -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 0; -moz-transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 1; -moz-transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 1; -moz-transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 1; -moz-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    @keyframes rotatebackandfadein {
+      0% { opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      25% { opacity: 0; transform: matrix3d(0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, 0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      50% { opacity: 0; transform: matrix3d(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      75% { opacity: 1; transform: matrix3d(-0.7, 0, 0.7, 0, 0, 1, 0, 0, -0.7, 0, -0.7, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+      100% { opacity: 1; transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1); animation-timing-function: linear;}
+    }
+
+    </style>
+    <!-- <div id="scrim"></div> -->
+    <div id="back" class="back-side rotateandfadeout mirror">
+      <div>
+      <span id="title" class="title mirror">
+      <content select="name"></content></span>
+      </div>
+    </div>
+    <div id="front" class="front-side rotateandfadein">
+      <content select="img"></content>
+    </div>
+    <div id="scrim"></div>
+  </template>
+  <script>
+
+    Polymer({
+      publish: {
+        selected: false
+      },
+      tapped: function(event, detail, sender) {
+        // console.log();
+        // console.log(this.selected);
+        this.selected = !this.selected;
+        // console.log(this.selected);
+        if(this.selected){
+          var that = this;
+          var timeout = setTimeout(function(){
+            // console.log(window.innerWidth);
+            // console.log(that.$.back);
+            that.$.back.className += " about-panel";
+            that.$.title.className += " bigger-title";
+            clearTimeout(timeout);
+          },380);
+          that.$.back.className = 'back-side mirror rotatebackandfadein';
+          that.$.front.className = 'front-side rotatebackandfadeout';
+        }else{
+          var that = this;
+          that.$.title.className = 'title mirror';
+          var timeout = setTimeout(function(){
+          that.$.back.className = 'back-side rotateandfadeout mirror';
+          that.$.front.className = 'front-side rotateandfadein';
+          clearTimeout(timeout);
+          },380);
+
+        }
+      }
+    });
+
+  </script>
+</polymer-element>
