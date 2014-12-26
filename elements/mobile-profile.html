@@ -10,10 +10,21 @@
       -webkit-transform-style: preserve-3d;
       -moz-transform-style: preserve-3d;
       transform-style: preserve-3d;
+      cursor: hand;
+      cursor: pointer;
     }
     polyfill-next-selector { content: ':host > div'; }
     ::content div { /* scope relative selector */
       background: blue;
+    }
+    .blurred {
+      display:block;
+      -webkit-filter: blur(20px);
+      -moz-filter: blur(15px);
+      -o-filter: blur(15px);
+      -ms-filter: blur(15px);
+      filter: blur(15px);
+      opacity: 0.95;
     }
     .front-side {
       position: absolute;
@@ -27,8 +38,8 @@
       -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
       -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
       transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-      -webkit-transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s;
-      transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s;
+      -webkit-transition:width 0.38s linear , height 0.38s linear , z-index 0.38s;
+      transition:width 0.38s linear , height 0.38s linear , z-index 0.38s;
     }
 
     polyfill-next-selector { content: '.front-side img'; }
@@ -36,8 +47,14 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
+      box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.20);
+      -webkit-transition: box-shadow 0.38s;
+      transition: box-shadow 0.38s;
     }
-
+    .front-side:hover {
+      /*padding: 2px;*/
+      box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+    }
     .back-side {
       position: absolute;
       left:30px;
@@ -50,35 +67,91 @@
       -webkit-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
       -moz-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
       transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
-      -webkit-transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s border-radius 0.38s;
-      transition:width ease-in-out 0.38s, height ease-in-out 0.38s, z-index 0.38s border-radius 0.38s;
+      -webkit-transition:width 0.38s linear , height 0.38s linear , z-index 0.38s;
+      transition:width 0.38s linear , height 0.38s linear , z-index 0.38s;
       text-align: right;
     }
-    /*left 0.38s, top 0.38s, */
-    .about-panel{
-      z-index: 500;
-      /*left: 0;
-      top: 0;*/
-      width: 1000px;
-      height: 800px;
-      border-radius: 0;
-    }
-    .title {
+    .about-title{
+      display: inline-block;
       position: absolute;
-      right:55px;
+      top: 0;
+      left: 0;
+      padding-right: 71px;
+      padding-left: 71px;
       font-weight: 700;
       font-size: 15px;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #fff;
       line-height: 200px;
-      -webkit-transition: font-size ease-in-out 0.38s;
-      transition: font-size ease-in-out 0.38s;
+      opacity: 0;
+      -webkit-transition: opacity 0.38s;
+      transition: opacity 0.38s;
+    }
+    .about-title:hover{
+      opacity: 0.7;
+    }
+    /*left 0.38s, top 0.38s, */
+    .about-panel{
+      z-index: 500;
+      width: 600px;
+      height: 600px;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      /*cursor: url(./../images/x-mark.png), auto;*/
+      /*border-radius: 50%;*/
+    }
+    .desc{
+      position: absolute;
+      right:105px;
+      top: 210px;
+      font-weight: 500;
+      font-size: 14px;
+      width: 50%;
+      line-height: 24px;
+      /*letter-spacing: 1px;*/
+      color: #fff;
+      opacity: 0;
+      text-align: left;
+      -webkit-transition: opacity 0.18s linear;
+      transition: opacity 0.18s linear;
+    }
+    .job-title{
+      position: absolute;
+      right:105px;
+      top: 165px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1px;
+      color: #fff;
+      opacity: 0;
+      -webkit-transition: opacity 0.18s linear;
+      transition: opacity 0.18s linear;
+    }
+    .visible{
+      opacity: 1;
+    }
+    .title {
+      position: absolute;
+      right:55px;
+      margin-right: 0px;
+      margin-top: 0px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 200px;
+      -webkit-transition: font-size 0.38s linear, margin-right 0.38s linear, margin-top 0.38s linear;
+      transition: font-size 0.38s linear, margin-right 0.38s linear, margin-top 0.38s linear;
     }
     .bigger-title{
-      font-size: 48px;
-      /*-webkit-transition: font-size ease-in-out 0.38s;
-      transition: font-size ease-in-out 0.38s;*/
+      font-size: 2.5em;
+      margin-right: 50px;
+      margin-top: 40px;
+      /*left: 30px;*/
+      /*top: 30px;*/
+      -webkit-transition: font-size 0.38s margin-right 0.38s;
+      transition: font-size 0.38s margin-right 0.38s;
     }
     .mirror {
       display: inline-block;
@@ -88,13 +161,11 @@
       transform: scaleX(-1);
       filter: FlipH; /* IE 6/7/8 */
     }
-
     .rotateandfadeout {
       -webkit-animation: rotateandfadeout 0.38s linear 0s 1 normal forwards;
       -moz-animation: rotateandfadeout 0.38s linear 0s 1 normal forwards;
       animation: rotateandfadeout 0.38s linear 0s 1 normal forwards;
     }
-
     .rotateandfadein {
       -webkit-animation: rotateandfadein 0.38s linear 0s 1 normal forwards;
       -moz-animation: rotateandfadein 0.38s linear 0s 1 normal forwards;
@@ -214,12 +285,17 @@
       <div>
       <span id="title" class="title mirror">
       <content select="name"></content></span>
+      <span id="jobTitle" class="job-title mirror">
+      <content select="job-title"></content></span>
+      <span id="description" class="desc mirror">
+      <content select="desc"></content></span>
       </div>
     </div>
     <div id="front" class="front-side rotateandfadein">
       <content select="img"></content>
+      <span id="about" class="about-title">ABOUT</span>
     </div>
-    <div id="scrim"></div>
+
   </template>
   <script>
 
@@ -234,24 +310,30 @@
         // console.log(this.selected);
         if(this.selected){
           var that = this;
+          that.$.back.className = 'back-side mirror rotatebackandfadein';
+          that.$.front.className = 'front-side rotatebackandfadeout';
           var timeout = setTimeout(function(){
-            // console.log(window.innerWidth);
-            // console.log(that.$.back);
             that.$.back.className += " about-panel";
             that.$.title.className += " bigger-title";
             clearTimeout(timeout);
           },380);
-          that.$.back.className = 'back-side mirror rotatebackandfadein';
-          that.$.front.className = 'front-side rotatebackandfadeout';
+          var secondtimeout = setTimeout(function(){
+            that.$.jobTitle.className += " visible";
+            that.$.description.className += " visible";
+            clearTimeout(secondtimeout);
+          },680);
         }else{
           var that = this;
+          that.$.description.className = 'desc mirror';
+          that.$.jobTitle.className = 'job-title mirror';
           that.$.title.className = 'title mirror';
-          var timeout = setTimeout(function(){
-          that.$.back.className = 'back-side rotateandfadeout mirror';
-          that.$.front.className = 'front-side rotateandfadein';
-          clearTimeout(timeout);
-          },380);
+          that.$.back.className = 'back-side mirror';
 
+          var timeout = setTimeout(function(){
+            that.$.back.className = 'back-side rotateandfadeout mirror';
+            that.$.front.className = 'front-side rotateandfadein';
+            clearTimeout(timeout);
+          },380);
         }
       }
     });
