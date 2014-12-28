@@ -15,49 +15,35 @@
   <link rel="import"  href="components/core-toolbar/core-toolbar.html">
   <link rel="import"  href="components/paper-tabs/paper-tabs.html">
   <link rel="import" href="components/core-scaffold/core-scaffold.html">
-  <link rel="import" href="components/core-menu/core-menu.html">
-  <link rel="import" href="components/paper-item/paper-item.html">
-  <link rel="import" href="components/core-animated-pages/core-animated-pages.html">
-  <link rel="import" href="components/core-animated-pages/transitions/slide-from-right.html">
+  <!-- <link rel="import" href="components/core-animated-pages/core-animated-pages.html">
+  <link rel="import" href="components/core-animated-pages/transitions/slide-from-right.html"> -->
   <link rel="import" href="elements/mobile-profile.html">
+  <link rel="import" href="elements/item-nav.html">
   <link rel="stylesheet" href="css/index.css">
 
 </head>
 
 <body unresolved fullbleed>
   <core-scaffold id="scaffold">
-
     <nav>
       <div class="profile-wrapper">
         <mobile-profile>
           <name>JESS JUNG</name>
           <job-title>Interaction Designer</job-title>
-          <desc>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</desc>
-          <img src="images/test.jpg">
+          <desc>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</desc>
+          <img id="thumbnail" src="">
         </mobile-profile>
       </div>
-      <core-menu selected="0">
-        <paper-item noink>
-          <a href="#one">First Project</a>
-        </paper-item>
-        <paper-item noink>
-          <a href="#two">Second Project</a>
-        </paper-item>
-        <paper-item noink>
-          <a href="#three">Third Project</a>
-        </paper-item>
-        ...
-      </core-menu>
+      <item-nav></item-nav>
     </nav>
-
     <!-- <core-header-panel> -->
       <core-toolbar tool flex>
         <!-- <div flex horizontal layout center center-justified> -->
         <div flex horizontal layout center id="project-title">
-          <span class="menu-lable">project title</span>
+          <span class="menu-label"></span>
         </div>
         <paper-tabs id="tabs" selected="tab1" self-end>
-          <paper-tab name="tab1"><core-icon icon="expand-more"></core-icon> UX/UI</paper-tab>
+          <paper-tab name="tab1"><core-icon icon="expand-more"></core-icon> INTERACTION</paper-tab>
           <paper-tab name="tab2"><core-icon icon="expand-more"></core-icon> VISUAL</paper-tab>
           <paper-tab name="tab3"><core-icon icon="expand-more"></core-icon> PROTOTYPE</paper-tab>
         </paper-tabs>
@@ -75,8 +61,10 @@
       </core-animated-pages>
     </div>
   </core-scaffold>
+  <div id="darkscreen" class="rollout"></div>
 
   <script>
+
 
   </script>
 </body>
