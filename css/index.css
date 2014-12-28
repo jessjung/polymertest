@@ -63,6 +63,7 @@ paper-tabs paper-tab #ink {
 }
 paper-tab{
   letter-spacing: 1px;
+  font-size: 12px;
 }
 paper-item{
   font-size: 11px;
