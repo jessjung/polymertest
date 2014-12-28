@@ -24,6 +24,22 @@
       border: 1px solid rgba(255,255,255,0.5);
       background-color: rgba(255,255,255,0.5);
     }
+    #darkscreen{
+      top:0;
+      left:0;
+      height: 2000px;
+      background: rgba(0,0,0,0.7);
+      position: absolute;
+      z-index: 1;
+    }
+    .rollin{
+      width: 4000px;
+    }
+    .rollout{
+      width: 0px;
+      -webkit-transition: width 0.38s;
+      transition: width 0.38s;
+    }
     .space {
       width: 100%;
       height: 30px;
@@ -38,7 +54,7 @@
       opacity: 0.95;
     }
     .front-side {
-      position: absolute;
+      position: fixed;
       left:30px;
       top:30px;
       width: 200px;
@@ -68,7 +84,7 @@
     }
 
     .back-side {
-      position: absolute;
+      position: fixed;
       left:30px;
       top:30px;
       width: 200px;
@@ -85,7 +101,7 @@
     }
     .about-title{
       display: inline-block;
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       padding-right: 71px;
@@ -105,6 +121,7 @@
     }
     /*left 0.38s, top 0.38s, */
     .about-panel{
+      position: absolute;
       z-index: 500;
       width: 600px;
       height: 600px;
@@ -113,7 +130,7 @@
       /*border-radius: 50%;*/
     }
     .desc{
-      position: absolute;
+      position: fixed;
       right:105px;
       top: 210px;
       font-weight: 500;
@@ -129,7 +146,7 @@
       visibility: hidden;
     }
     .job-title{
-      position: absolute;
+      position: fixed;
       right:105px;
       top: 165px;
       font-weight: 700;
@@ -145,7 +162,7 @@
       opacity: 1;
     }
     .title {
-      position: absolute;
+      position: fixed;
       right:55px;
       margin-right: 0px;
       margin-top: 0px;
@@ -314,6 +331,7 @@
       <content select="img"></content>
       <span id="about" class="about-title">ABOUT</span>
     </div>
+    <div id="darkscreen" class="rollout"></div>
   </template>
   <script>
 
@@ -322,7 +340,7 @@
         selected: false
       },
       tapped: function(event, detail, sender) {
-        // console.log();
+        // console.log(this.$.darkscreen.className);
         // console.log(this.selected);
         this.selected = !this.selected;
         // console.log(this.selected);
@@ -338,8 +356,8 @@
           var secondtimeout = setTimeout(function(){
             that.$.jobTitle.className += " visible";
             that.$.description.className += " visible";
-            var s = document.getElementById('darkscreen');
-            s.className = 'rollin';
+            that.$.darkscreen.className = 'rollin';
+
             clearTimeout(secondtimeout);
           },680);
 
@@ -349,8 +367,8 @@
           that.$.jobTitle.className = 'job-title mirror';
           that.$.title.className = 'title mirror';
           that.$.back.className = 'back-side mirror';
-          var s = document.getElementById('darkscreen');
-          s.className = 'rollout';
+          that.$.darkscreen.className = 'rollout';
+
 
           var timeout = setTimeout(function(){
             that.$.back.className = 'back-side rotateandfadeout mirror';

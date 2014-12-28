@@ -21,16 +21,16 @@ a{
   -webkit-overflow-scrolling: touch;
 }*/
 #darkscreen{
-  height: 100%;
+  height: 2000px;
   background: rgba(0,0,0,0.7);
-  position: absolute;
+  position: relative;
   z-index: 1;
 }
 .rollin{
-  width: 100%;
+  width: 4000px;
 }
 .rollout{
-  width: 0%;
+  width: 0px;
   -webkit-transition: width 0.38s;
   transition: width 0.38s;
 }
@@ -98,7 +98,6 @@ paper-item.core-selected{
 
 .menu-label{
   /*width: 40%;*/
-  position: absolute;
   line-height: 48px;
   letter-spacing: 1px;
   font-size: 14px;

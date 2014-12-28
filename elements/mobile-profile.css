@@ -16,7 +16,7 @@
       background: blue;
     }
     .front-side {
-      position: absolute;
+      position: relative;
       left:30px;
       top:30px;
       width: 200px;
@@ -37,7 +37,7 @@
     }
 
     .back-side {
-      position: absolute;
+      position: relative;
       left:30px;
       top:30px;
       width: 200px;
@@ -186,22 +186,6 @@
       transform: scaleX(-1);
       filter: FlipH; /* IE 6/7/8 */
     }
-
-    #scrim {
-      position: absolute;
-      top: 0;
-      right: 0;
-      /*bottom: 0;*/
-      /*left: 0;*/
-      width:100%;
-      height:100%;
-      background-color: rgba(0, 0, 0, 0.3);
-      /*visibility: hidden;
-      opacity: 0;*/
-      transition: opacity ease-in-out 0.38s, visibility ease-in-out 0.38s;
-    }
-
-
     </style>
     <div id="back" class="back-side rotateandfadeout mirror">
       <div><span id="title" class="title mirror">
