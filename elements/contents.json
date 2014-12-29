@@ -21,42 +21,42 @@
     "selected": false
   },
   {
-    "uid": 6,
+    "uid": 4,
     "title":  "GoGetIt app",
     "thumbnail":  "images/gg-th.jpg",
     "colorcode": "#55a984",
     "selected": false
   },
   {
-    "uid": 7,
+    "uid": 5,
     "title":  "We advance U",
     "thumbnail":  "images/wa-th.jpg",
     "colorcode": "#276dbd",
     "selected": false
   },
   {
-    "uid": 8,
+    "uid": 6,
     "title":  "Happy Circuits",
     "thumbnail":  "images/hc-th.jpg",
     "colorcode": "#e1cc19",
     "selected": false
   },
   {
-    "uid": 9,
+    "uid": 7,
     "title":  "Make a wish",
     "thumbnail":  "images/mw-th.jpg",
     "colorcode": "#d89d3e",
     "selected": false
   },
   {
-    "uid": 10,
+    "uid": 8,
     "title":  "Mindful units",
     "thumbnail":  "images/mu-th.jpg",
     "colorcode": "#c3c83c",
     "selected": false
   },
   {
-    "uid": 11,
+    "uid": 9,
     "title":  "Chopsticking",
     "thumbnail":  "images/ch-th.jpg",
     "colorcode": "#e56055",
