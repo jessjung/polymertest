@@ -59,8 +59,47 @@
       </core-animated-pages>
     </div>
   </core-scaffold>
-  <script>
+  <div horizontal layout center class="cover-wrapper" id="cover">
 
+    <div horizontal center-justified layout class="whitehole" id="trigger">
+      <div layout vertical center-justified class="arrow-wrapper">
+      <svg version="1.1" id="arrow" class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="100px" height="100px" viewBox="0 0 368 367" enable-background="new 0 0 368 367" xml:space="preserve">
+      <polygon fill="#FFFFFF" points="364,4 364,59.084 368,62.294 368,0 305.683,0 308.894,4 "/>
+      <line fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" x1="364.282" y1="3.696" x2="3.406" y2="364"/>
+      <polygon fill="#FFFFFF" points="4,363 4,308.21 0,305 0,367 62,367 58.789,363 "/>
+      </svg>
+    </div>
+      <div layout vertical center-justified class="text-wrapper" id="texts">
+        <span auto-vertical class="cover-title">JESS JUNG</span>
+        <hr auto-vertical class="cover-hr" id="line">
+        <span auto-vertical class="cover-subline">PORTFOLIO</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("trigger").addEventListener("mouseenter", function(){
+      document.getElementById("arrow").setAttribute('width','300px');
+      document.getElementById("arrow").setAttribute('height','300px');
+      document.querySelector("svg#arrow").className += " expanded";
+      document.querySelector("hr#line").className += " stretched";
+    });
+    document.getElementById("trigger").addEventListener("mouseleave", function(){
+      document.getElementById("arrow").setAttribute('width','100px');
+      document.getElementById("arrow").setAttribute('height','100px');
+      document.querySelector("svg#arrow").className = "";
+      document.querySelector("hr#line").className = "cover-hr";
+    });
+    document.getElementById("trigger").onclick = function(){
+      this.className = "whitehole boom";
+      document.querySelector("div#texts").style.visibility = "hidden";
+      var timeout = setTimeout(function(){
+        document.querySelector("div#cover").style.visibility = "hidden";
+        document.querySelector("core-scaffold").style.visibility = "visible";
+        clearTimeout(timeout);
+      },680);
+
+    };
 
   </script>
 </body>
