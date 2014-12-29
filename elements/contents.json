@@ -2,55 +2,64 @@
   {
     "uid": 1,
     "title":  "Phonebill",
-    "thumbnail":  "images/phonebill-th.jpg",
-    "selected": false
+    "thumbnail":  "images/pb-th.jpg",
+    "colorcode": "#a85dcf",
+    "selected": true
   },
   {
     "uid": 2,
     "title":  "Serendiffiti",
-    "thumbnail":  "images/serendiffiti-th.jpg",
+    "thumbnail":  "images/se-th.jpg",
+    "colorcode": "#3ab5d9",
     "selected": false
   },
   {
     "uid": 3,
     "title":  "Grinch Vs. Whos",
-    "thumbnail":  "images/grinch-th.jpg",
+    "thumbnail":  "images/gr-th.jpg",
+    "colorcode": "#635bb5",
     "selected": false
   },
   {
     "uid": 6,
     "title":  "GoGetIt app",
-    "thumbnail":  "images/gogetit-th.jpg",
+    "thumbnail":  "images/gg-th.jpg",
+    "colorcode": "#55a984",
     "selected": false
   },
   {
     "uid": 7,
     "title":  "We advance U",
-    "thumbnail":  "images/weadvanceu-th.jpg",
+    "thumbnail":  "images/wa-th.jpg",
+    "colorcode": "#276dbd",
     "selected": false
   },
   {
     "uid": 8,
     "title":  "Happy Circuits",
-    "thumbnail":  "images/happycircuit-th.jpg",
+    "thumbnail":  "images/hc-th.jpg",
+    "colorcode": "#e1cc19",
     "selected": false
   },
   {
     "uid": 9,
     "title":  "Make a wish",
-    "thumbnail":  "images/makeawish-th.jpg",
+    "thumbnail":  "images/mw-th.jpg",
+    "colorcode": "#d89d3e",
     "selected": false
   },
   {
     "uid": 10,
     "title":  "Mindful units",
-    "thumbnail":  "images/mindfulunits-th.jpg",
+    "thumbnail":  "images/mu-th.jpg",
+    "colorcode": "#c3c83c",
     "selected": false
   },
   {
     "uid": 11,
     "title":  "Chopsticking",
-    "thumbnail":  "images/chopsticking-th.jpg",
+    "thumbnail":  "images/ch-th.jpg",
+    "colorcode": "#e56055",
     "selected": false
   }
 ]

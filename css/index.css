@@ -8,18 +8,10 @@ html,body,div {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/*div{
-  background: red;
-}*/
 a{
   text-decoration: none;
   color: #666666;
 }
-/*core-header-panel {
-  height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}*/
 #darkscreen{
   height: 2000px;
   background: rgba(0,0,0,0.7);

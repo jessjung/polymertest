@@ -5,7 +5,6 @@
 
 <polymer-element name="mobile-profile" on-click="{{tapped}}">
   <template>
-    <!-- <link rel="stylesheet" href="mobile-profile.css"> -->
     <style>
     :host {
       /*background-color: rgb(243,99,104);*/
@@ -90,8 +89,6 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      background-color: rgb(243,99,104);
-      background: rgb(243,99,104);
       -webkit-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
       -moz-transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
       transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
@@ -117,7 +114,7 @@
       transition: opacity 0.38s;
     }
     .about-title:hover{
-      opacity: 0.7;
+      opacity: 1;
     }
     /*left 0.38s, top 0.38s, */
     .about-panel{
@@ -340,10 +337,8 @@
         selected: false
       },
       tapped: function(event, detail, sender) {
-        // console.log(this.$.darkscreen.className);
-        // console.log(this.selected);
+
         this.selected = !this.selected;
-        // console.log(this.selected);
         if(this.selected){
           var that = this;
           that.$.back.className = 'back-side mirror rotatebackandfadein';
