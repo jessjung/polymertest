@@ -111,13 +111,32 @@ paper-item{
 .cover-wrapper{
   width: 100%;
   height: 100%;
-  background: url(../images/cover1.jpg) no-repeat;
-  background-size: cover;
   position: fixed;
   z-index: 1;
 
   /*visibility: hidden;*/
 }
+#coverimage-1{
+  background: url(../images/cover1.jpg) no-repeat;
+  background-size: cover;
+}
+#coverimage-2{
+  background: url(../images/cover2.jpg) no-repeat;
+  background-size: cover;
+}
+#coverimage-3{
+  background: url(../images/cover3.jpg) no-repeat;
+  background-size: cover;
+}
+#coverimage-4{
+  background: url(../images/cover4.jpg) no-repeat;
+  background-size: cover;
+}
+#coverimage-5{
+  background: url(../images/cover5.jpg) no-repeat;
+  background-size: cover;
+}
+
 .whitehole{
   width: 300px;
   height: 300px;
@@ -197,4 +216,17 @@ svg#arrow.expanded{
 
 core-scaffold{
   visibility: hidden;
+}
+core-animated-pages {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+section > div {
+  height: 100%;
+  color: white;
 }

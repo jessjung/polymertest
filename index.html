@@ -15,6 +15,11 @@
   <link rel="import"  href="components/core-toolbar/core-toolbar.html">
   <link rel="import"  href="components/paper-tabs/paper-tabs.html">
   <link rel="import" href="components/core-scaffold/core-scaffold.html">
+
+  <link rel="import"  href="components/core-animated-pages/core-animated-pages.html">
+  <link rel="import"  href="components/core-animated-pages/transitions/cross-fade.html">
+  <link rel="import" href="components/core-animated-pages/transitions/slide-from-right.html">
+
   <link rel="import" href="elements/mobile-profile.html">
   <link rel="import" href="elements/item-nav.html">
   <link rel="stylesheet" href="css/index.css">
@@ -60,7 +65,23 @@
     </div>
   </core-scaffold>
   <div horizontal layout center class="cover-wrapper" id="cover">
-
+    <core-animated-pages transitions="cross-fade-all" class="cover">
+      <section>
+        <div layout vertical center center-justified id="coverimage-1"></div>
+      </section>
+      <section>
+        <div layout vertical center center-justified id="coverimage-2"></div>
+      </section>
+      <section>
+        <div layout vertical center center-justified id="coverimage-3"></div>
+      </section>
+      <section>
+        <div layout vertical center center-justified id="coverimage-4"></div>
+      </section>
+      <section>
+        <div layout vertical center center-justified id="coverimage-5"></div>
+      </section>
+    </core-animated-pages>
     <div horizontal center-justified layout class="whitehole" id="trigger">
       <div layout vertical center-justified class="arrow-wrapper">
       <svg version="1.1" id="arrow" class="" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -78,6 +99,22 @@
     </div>
   </div>
   <script>
+    var up = true;
+    var max = 3;
+    var p = document.querySelectorAll('core-animated-pages')[1];
+    p.selected = 1;
+    console.log(p.selected);
+    var transitionInterval = setInterval(stuff, 3000);
+    function stuff() {
+      if (up && p.selected === max || !up && p.selected === 0) {
+        up = !up;
+      }
+      if (up) {
+        p.selected += 1;
+      } else {
+        p.selected -= 1;
+      }
+    }
     document.getElementById("trigger").addEventListener("mouseenter", function(){
       document.getElementById("arrow").setAttribute('width','300px');
       document.getElementById("arrow").setAttribute('height','300px');
@@ -98,7 +135,6 @@
         document.querySelector("core-scaffold").style.visibility = "visible";
         clearTimeout(timeout);
       },680);
-
     };
 
   </script>
