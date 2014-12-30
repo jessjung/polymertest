@@ -1,0 +1,40 @@
+
+<body unresolved fullbleed>
+  <core-scaffold id="scaffold">
+    <nav>
+      <div class="profile-wrapper">
+        <mobile-profile>
+          <name>JESS JUNG</name>
+          <job-title>Interaction Designer</job-title>
+          <desc>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</desc>
+          <img id="thumbnail" src="images/pb-th.jpg">
+        </mobile-profile>
+      </div>
+      <item-nav></item-nav>
+    </nav>
+    <!-- <core-header-panel> -->
+      <core-toolbar tool flex>
+        <!-- <div flex horizontal layout center center-justified> -->
+        <div flex horizontal layout center id="project-title">
+          <span class="menu-label"></span>
+        </div>
+        <paper-tabs id="tabs" selected="tab1" self-end>
+          <paper-tab name="tab1"><core-icon icon="expand-more"></core-icon> INTERACTION</paper-tab>
+          <paper-tab name="tab2"><core-icon icon="expand-more"></core-icon> VISUAL</paper-tab>
+          <paper-tab name="tab3"><core-icon icon="expand-more"></core-icon> PROTOTYPE</paper-tab>
+        </paper-tabs>
+      </core-toolbar>
+    <!-- </core-header-panel> -->
+    <div layout horizontal center-center fit>
+      <!-- <core-animated-pages  selected="0" transitions="slide-from-right">
+        <section layout vertical center-center>
+        </section>
+        <section layout vertical center-center>
+        </section>
+      </core-animated-pages> -->
+    </div>
+  </core-scaffold>
+  <script>
+    document.querySelector("core-scaffold").style.visibility = "visible";
+  </script>
+</body>

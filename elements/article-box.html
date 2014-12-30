@@ -1,0 +1,205 @@
+<polymer-element name="article-box">
+  <template>
+    <style>
+      :host{
+        width: 80%;
+        font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 12px;
+        font-weight: 200;
+        line-height: 1.43;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2d2d2d;
+      }
+      @media (min-width: 1300px) {
+        :host{
+          width: 60%;
+          font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+          font-size: 12px;
+          font-weight: 200;
+          line-height: 1.43;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-align: center;
+          color: #2d2d2d;
+        }
+      }
+      p, li{
+        font-size: 15px;
+      }
+      a{
+        color: #428bca;
+        text-decoration: none;
+      }
+      .pointcolor{
+        font-weight: 700;
+        color: #f36368;
+      }
+      .chapter{
+        padding-top: 200px;
+      }
+      .big-title{
+        font-size: 3em;
+        font-weight: 700;
+        /*line-height: 2;*/
+      }
+      .chapter-title{
+        font-size: 1.8em;
+        font-weight: 700;
+        color: #f36368;
+      }
+      .title-wrapper{
+        padding: 20px;
+      }
+      .synopsis{
+        font-weight: 500;
+      }
+      img{
+        width:100%;
+        height: auto;
+      }
+      .tagline, .time, .role{
+        letter-spacing: 1px;
+      }
+      core-icon{
+        color: #f36368;
+      }
+      .uppercase {
+        text-transform: uppercase;
+      }
+      .text-jumbo {
+        font-size: 2em;
+        font-weight: 500;
+        line-height: 1;
+      }
+      .paragraph{
+        /*width: 60%;*/
+        /*margin: auto;*/
+        text-align: left;
+      }
+      .emphasized{
+        font-size: 1.3em;
+        font-weight: 500;
+        line-height: 2;
+      }
+      .row-space-2 {
+        margin-bottom: 2em;
+      }
+      .content-space-bar{
+        height: 80px;
+        width: 100%;
+      }
+      .button{
+        border: 2px solid #428bca;
+        text-align: center;
+        /*width: 30%;*/
+
+        line-height: 27px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-decoration: none;
+        padding: 10px 30px 6px 30px;
+        margin-right: 20px;
+        vertical-align: center;
+        cursor: hand;
+        cursor: pointer;
+      }
+      .button:hover{
+        background-color: #428bca;
+        color: #fff;
+      }
+    </style>
+    <div class="chapter">
+      <!-- ////////////////// project info content from json///////////////////-->
+      <p><span class="time">October 2014</span> | <span class="role">Collaborated with 0000 00000</span></p>
+      <div class="title-wrapper"><h1><span class="big-title">Project Title</span></h1></div>
+      <h3><span class="synopsis">Design Exercise for redesigning a phone bill inspired by a dashboard design.</span></h3>
+      <p><span class="tagline">tag1 | tag2 | tag3 | tag4 | tag5 | tag6</p>
+    </div>
+    <div class="chapter">
+      <!-- ////////////////// image contents from json///////////////////-->
+      <img src="../images/pb/n-pb-1.png" />
+      <img src="../images/pb/n-pb-solution.jpg" />
+    </div>
+    <div class="chapter" id="tab1">
+    <div id="interaction">
+      <h2><span class="chapter-title">INTERACTION</span><br/><core-icon icon="expand-more"></core-icon></h2>
+    </div>
+    <div class="chapter paragraph" id="interaction-paragraph">
+        <!-- ////////////////// html content from json///////////////////-->
+        <h2 class="pointcolor uppercase row-space-2">Usability Assessment</h2>
+        <p>I have used T-mobile as my carrier for two years. Whenever I logged in and tried to find what was a problem of this month's bill bomb, I often feel frustrated. Phonebill is worthy to redesign. For analysing all pain points, I looked over all process end-to-end and expressed it into a user-flow diagram.
+        </p>
+        <p class="emphasized row-space-2">Pain Points</p>
+        <ul>
+        <li>Users should find a target link -> click -> load a new page (even it takes some minutes). Too many pages!</li>
+        <li>Summary and details about same category of information are dispalyed in a different pages.</li>
+        <li>Need to be more visual. Text-based information with a lack of filters.</li>
+        <li>Needs a quick tool to move on the timeline for comparison.</li>
+        </ul>
+        </p>
+        <p class="emphasized row-space-2">Current user flow - my.t-mobile.com</p>
+        <img src="../images/pb/n-pb-c-flow.png" />
+        <div class="content-space-bar"></div>
+        <p class="emphasized row-space-2">Questions</p>
+        <ul>
+        <li>What if users get a summary of information and related details at once?</li>
+        <li>How to avoid to load new pages and access data with consistency?</li>
+        <li>What is the efficient way to display information with clear navigation?</li>
+        </ul>
+        <div class="content-space-bar"></div>
+        <h2 class="pointcolor uppercase row-space-2">Possible Solutions</h2>
+        <h1>1. Informational Navigation</h1>
+        <p>A Navigation includes the visualized thumbnail information (e.g. Amount Owed / Due dates / Total usages.) Also, in a narrow scope of data visualization, a part of diagrams can be a navigation to get the more detailed visualization.</p>
+        <h1>2. Access all data in less clicks</h1>
+        <p>Users can get all information in few clicks without loading a new page. Dynamic contents with a cross-filtering can be a solution.</p>
+        <div class="content-space-bar"></div>
+        <p class="emphasized row-space-3">Redesigned user flow - Phonebill-board</p>
+        <img src="../images/pb/n-pb-n-flow.png" />
+
+        <div class="content-space-bar"></div>
+        <h2 class="pointcolor uppercase row-space-2">Wireframes</h2>
+        <img src="../images/pb/n-pb-wf-1.png" />
+        <img src="../images/pb/n-pb-wf-3.png" />
+        <img src="../images/pb/n-pb-wf-4.png" />
+    </div>
+  </div>
+  <div class="chapter" id="tab2">
+    <div id="visual">
+      <h2><span class="chapter-title">VISUAL</span><br/><core-icon icon="expand-more"></core-icon></h2>
+    </div>
+    <div class="chapter paragraph" id="visual-paragraph">
+        <h4 class="emphasized row-space-2">UI Design</h4>
+        <img src="../images/pb/n-pb-ux.jpg" />
+        <img src="../images/pb/pb4.jpg" />
+        <h4 class="emphasized row-space-2">Design Mockup</h4>
+        <img src="../images/pb/n-pb-mck.jpg" />
+    </div>
+  </div>
+  <div class="chapter" id="tab3">
+    <div id="prototype">
+      <h2><span class="chapter-title">PROTOTYPE</span><br/><core-icon icon="expand-more"></core-icon></h2>
+    </div>
+    <div class="chapter paragraph" id="prototype-paragraph">
+        <h4 class="emphasized row-space-2">Interactive Prototype</h4>
+        <p>I coded an interactive prototype to test how the cross-filtering navigation design works.
+        </br>
+        I used pure Javascript/jQuery for interactivity, <span class="pointcolor"><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></span> and <span class="pointcolor"><a href="http://lesscss.org/" target="_blank">LESS</a></span> for styling, <span class="pointcolor"><a href="http://d3js.org/">D3.js</a></span>
+        for data visualization, <span class="pointcolor"><a href="https://github.com/jessjung/phonebill" target="_blank">Github</a></span> for running and version controling.</p>
+        <div class="content-space-bar"></div>
+        <img src="../images/pb/n-pb-demo.png" />
+        <div class="content-space-bar"></div>
+        <div horizontal layout>
+        <a href="http://jessjung.github.io/phonebill/" target="_blank"><div class="button"><p>GO TO LIVE DEMO</p></div></a>
+        <a href="https://github.com/jessjung/phonebill" target="_blank"><div class="button"><p>GET CODE</p></div></a>
+        </div>
+        <div class="content-space-bar"></div>
+        <div class="chapter"></div>
+    </div>
+  </div>
+  </template>
+  <script>
+  Polymer({});
+  </script>
+</polymer-element>

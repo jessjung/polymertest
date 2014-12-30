@@ -11,18 +11,20 @@
 
   <script src="components/webcomponentsjs/webcomponents.js">
   </script>
+
   <link rel="import"  href="components/core-drawer-panel/core-drawer-panel.html">
   <link rel="import"  href="components/core-toolbar/core-toolbar.html">
   <link rel="import"  href="components/paper-tabs/paper-tabs.html">
   <link rel="import" href="components/core-scaffold/core-scaffold.html">
-
   <link rel="import"  href="components/core-animated-pages/core-animated-pages.html">
   <link rel="import"  href="components/core-animated-pages/transitions/cross-fade.html">
   <link rel="import" href="components/core-animated-pages/transitions/slide-from-right.html">
+  <link rel="stylesheet" href="css/index.css">
 
   <link rel="import" href="elements/mobile-profile.html">
   <link rel="import" href="elements/item-nav.html">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="import" href="elements/article-box.html">
+
 
 </head>
 
@@ -40,28 +42,26 @@
       <item-nav></item-nav>
     </nav>
     <!-- <core-header-panel> -->
-      <core-toolbar tool flex>
-        <!-- <div flex horizontal layout center center-justified> -->
-        <div flex horizontal layout center id="project-title">
-          <span class="menu-label"></span>
-        </div>
-        <paper-tabs id="tabs" selected="tab1" self-end>
-          <paper-tab name="tab1"><core-icon icon="expand-more"></core-icon> INTERACTION</paper-tab>
-          <paper-tab name="tab2"><core-icon icon="expand-more"></core-icon> VISUAL</paper-tab>
-          <paper-tab name="tab3"><core-icon icon="expand-more"></core-icon> PROTOTYPE</paper-tab>
-        </paper-tabs>
-      </core-toolbar>
+    <core-toolbar tool flex>
+      <!-- <div flex horizontal layout center center-justified> -->
+      <div flex horizontal layout center id="project-title">
+        <span class="menu-label"></span>
+      </div>
+      <paper-tabs id="tabs" selected="" self-end>
+        <paper-tab name="tab1"><core-icon icon="expand-more"></core-icon> INTERACTION</paper-tab>
+        <paper-tab name="tab2"><core-icon icon="expand-more"></core-icon> VISUAL</paper-tab>
+        <paper-tab name="tab3"><core-icon icon="expand-more"></core-icon> PROTOTYPE</paper-tab>
+      </paper-tabs>
+    </core-toolbar>
     <!-- </core-header-panel> -->
-    <div layout horizontal center-center fit>
-      <core-animated-pages  selected="0" transitions="slide-from-right">
+    <div layout horizontal center-justified fit>
+      <article-box></article-box>
+      <!-- <core-animated-pages  selected="0" transitions="slide-from-right">
         <section layout vertical center-center>
-          <!-- <div>project1</div> -->
         </section>
         <section layout vertical center-center>
-          <!-- <div>project2</div> -->
         </section>
-        ...
-      </core-animated-pages>
+      </core-animated-pages> -->
     </div>
   </core-scaffold>
   <div horizontal layout center class="cover-wrapper" id="cover">
@@ -101,9 +101,9 @@
   <script>
     var up = true;
     var max = 3;
-    var p = document.querySelectorAll('core-animated-pages')[1];
+    var p = document.querySelectorAll('core-animated-pages')[0];
     p.selected = 1;
-    console.log(p.selected);
+    // console.log(p.selected);
     var transitionInterval = setInterval(stuff, 3000);
     function stuff() {
       if (up && p.selected === max || !up && p.selected === 0) {
@@ -133,9 +133,22 @@
       var timeout = setTimeout(function(){
         document.querySelector("div#cover").style.visibility = "hidden";
         document.querySelector("core-scaffold").style.visibility = "visible";
-        clearTimeout(timeout);
+        clearTimeout(transitionInterval);
       },680);
     };
+
+    var tabs = document.querySelector('paper-tabs');
+    tabs.addEventListener('core-select', function() {
+      // console.log(tabs.selected);
+      // console.log(document.querySelector("article-box::shadow #interaction"));
+      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+      if (isChrome){
+          var b = document.querySelector("article-box::shadow #"+tabs.selected);
+      }else{
+          var b = document.getElementById(tabs.selected);
+      }
+      b.scrollIntoView();
+    });
 
   </script>
 </body>

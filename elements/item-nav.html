@@ -46,7 +46,7 @@
 
       <core-menu selected="0">
         <template repeat="{{post in posts}}">
-        <a href="#{{post.uid}}">
+        <a href="#article{{post.uid}}">
         <paper-item on-click={{tapped}}>
           {{post.title}}
           <script>
