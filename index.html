@@ -42,7 +42,7 @@
       <item-nav></item-nav>
     </nav>
     <!-- <core-header-panel> -->
-    <core-toolbar tool flex>
+    <core-toolbar id="header" tool flex>
       <!-- <div flex horizontal layout center center-justified> -->
       <div flex horizontal layout center id="project-title">
         <span class="menu-label"></span>
@@ -54,7 +54,7 @@
       </paper-tabs>
     </core-toolbar>
     <!-- </core-header-panel> -->
-    <div layout horizontal center-justified fit>
+    <div layout horizontal center-justified fit id="maincontent">
       <article-box></article-box>
       <!-- <core-animated-pages  selected="0" transitions="slide-from-right">
         <section layout vertical center-center>
@@ -137,17 +137,20 @@
       },680);
     };
 
+    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    if(!isChrome) document.getElementById("header").style.visibility = "hidden";
+
     var tabs = document.querySelector('paper-tabs');
     tabs.addEventListener('core-select', function() {
       // console.log(tabs.selected);
       // console.log(document.querySelector("article-box::shadow #interaction"));
-      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-      if (isChrome){
-          var b = document.querySelector("article-box::shadow #"+tabs.selected);
-      }else{
-          var b = document.getElementById(tabs.selected);
-      }
-      b.scrollIntoView();
+        if (isChrome){
+          var section = document.querySelector("article-box::shadow .show");
+          var b = section.querySelector("#"+tabs.selected);
+          b.scrollIntoView();
+          // console.log(b);
+        }
+
     });
 
   </script>

@@ -70,23 +70,61 @@
       </core-menu>
   </template>
   <script>
+
   Polymer({
     tapped: function(event, detail, sender){
       var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
       if (isChrome){
+          var tabcontents = document.querySelector('paper-tabs::shadow #tabsContent');
           var b = document.querySelector('mobile-profile::shadow #back');
+          var bar = document.querySelector('paper-tabs::shadow #selectionBar');
+          var route = 'article-box::shadow #post'+sender.templateInstance.model.post.uid;
+          var currentarticle = document.querySelector('article-box::shadow .show');
+          var newarticle = document.querySelector(route);
+          currentarticle.className = "hide";
+          newarticle.className = "show";
+          newarticle.querySelector("#intro").scrollIntoView();
+          // console.log(newarticle.querySelector("#intro"));
       }else{
           var b = document.getElementById('back');
+          var bar = document.getElementById('selectionBar');
+          var tabcontents = document.getElementById('tabsContent');
+          var route = 'post'+sender.templateInstance.model.post.uid;
+          // console.log(route);
+
+          for(var i = 1; i <10; i++){
+            document.getElementById('post'+i).className = "hide";
+          }
+          var newarticle = document.getElementById(route);
+          newarticle.className = "show";
+          newarticle.getElementsByTagName("div")[0].scrollIntoView();
+
       }
+
+      // console.log(tabcontents);
       b.style.background = sender.templateInstance.model.post.colorcode;
       var i = document.querySelector('img#thumbnail');
       i.src = sender.templateInstance.model.post.thumbnail;
       var t = document.querySelector('.menu-label');
       t.innerHTML = sender.templateInstance.model.post.title;
-      sender.templateInstance.model.post.selected = true;
+
+
+
+
+      // var tabs = document.querySelectorAll('paper-tab');
+
+      // console.log(tabs);
+      // for(var i = 0; i < tabs.length; i++){
+      //   tabs[i].className = "";
+      //   tabs[i].removeAttribute("active");
+      //   // console.log(tabs[i]);
+      // }
+      // var parent = document.getElementById("div1");
+      // var child = document.getElementById("p1");
+      // tabcontents.removeChild(bar);
     }
   });
-  var s = document.querySelector('core-menu');
+  // var s = document.querySelector('core-menu');
 
   </script>
 </polymer-element>
